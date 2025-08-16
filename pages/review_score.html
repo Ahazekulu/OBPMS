@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Score</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/review_score.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dagne Bank PMS</h2>
+            <div class="role-selector" id="role-selector-container">
+                <label for="user-role">View as:</label>
+                <select id="user-role" name="user-role">
+                    <option value="admin">Administrator</option>
+                    <option value="manager">Manager</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="employees.html"><i class="fas fa-users"></i> Employees</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="review_score.html" class="active"><i class="fas fa-star"></i> Review Score</a></li>
+                <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
+                <li><a href="engagement_survey.html"><i class="fas fa-chart-line"></i> Engagement Survey</a></li>
+                <li><a href="rewards.html"><i class="fas fa-gift"></i> Rewards</a></li>
+                <li><a href="archive.html"><i class="fas fa-archive"></i> Archive</a></li>
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="data.html"><i class="fas fa-database"></i> Data</a></li>
+                <li><a href="login.html" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <header class="main-header">
+                <h1>Performance Review Scores</h1>
+            </header>
+            
+            <main>
+                <div id="review-score-page-content">
+                    <section class="kpi-section">
+                        </section>
+                    
+                    <div class="reviews-grid">
+                        <section class="alerts-section">
+                            <div class="section-header">
+                                <h3><i class="fas fa-exclamation-triangle"></i> Actionable Alerts</h3>
+                            </div>
+                            <ul class="alerts-list">
+                                <li class="no-alerts">No alerts at this time.</li>
+                            </ul>
+                        </section>
+
+                        <section class="chart-section">
+                            <div class="section-header">
+                                <h3><i class="fas fa-chart-bar"></i> Review Score Distribution</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="reviewScoreChart"></canvas>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div id="review-summary-section" class="content-section">
+                        <div class="table-actions-container">
+                            <div class="table-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="review-search-input" placeholder="Search by name or ID...">
+                            </div>
+                            <div class="action-buttons">
+                                <button id="export-btn" class="action-btn secondary"><i class="fas fa-file-export"></i> Export</button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table id="reviews-table" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee ID</th>
+                                        <th>Full Name</th>
+                                        <th>Position</th>
+                                        <th>Number of Goals</th>
+                                        <th>Number of Competencies</th>
+                                        <th>Final Goal Score</th>
+                                        <th>Competency Score</th>
+                                        <th>Combined Score</th>
+                                        <th>Rank</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="reviews-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="review-details-section" class="content-section" style="display: none;">
+                        <div class="section-header">
+                             <a href="#" id="back-to-summary" class="back-link"><i class="fas fa-arrow-left"></i> Back to Summary</a>
+                            <h3>Review Details for <span id="details-employee-name"></span></h3>
+                        </div>
+                        
+                        <div id="goal-details-container">
+                            <div class="section-header-small">
+                                <h4>Goals</h4>
+                                <button id="add-goal-detail-btn" class="action-btn primary"><i class="fas fa-plus"></i> Add Goal</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="goal-details-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Done</th>
+                                            <th>Goal Group</th>
+                                            <th>Goal Name</th>
+                                            <th>Goal Weight (%)</th>
+                                            <th>Plan (Text)</th>
+                                            <th>Plan (Number/Percent)</th>
+                                            <th>Dimension</th>
+                                            <th>Actual Performance</th>
+                                            <th>Percentage of Performance (%)</th>
+                                            <th>Final Score</th>
+                                            <th colspan="3">Performance Rank</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        <tr class="sub-header">
+                                            <th colspan="10"></th>
+                                            <th>Division</th>
+                                            <th>Directorate</th>
+                                            <th>Bank</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="goal-details-table-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="competency-details-container" style="margin-top: 2rem;">
+                            <div class="section-header-small">
+                                <h4>Competencies</h4>
+                                <button id="add-competency-btn" class="action-btn primary"><i class="fas fa-plus"></i> Add Competency</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="competency-details-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Competency Name</th>
+                                            <th>Competency Score</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="competency-details-table-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <div id="goal-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add/Edit Goal</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="goal-form">
+                    <input type="hidden" id="modal-employee-id" name="id">
+                    <input type="hidden" id="modal-goal-id" name="goalId">
+
+                    <div class="form-group">
+                        <label for="goal-group">Goal Group</label>
+                        <input type="text" id="goal-group" name="goalGroup" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal-name">Goal Name</label>
+                        <input type="text" id="goal-name" name="goalName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal-weight">Goal Weight (%)</label>
+                        <input type="number" id="goal-weight" name="goalWeight" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal-plan-text">Plan (Text Description)</label>
+                        <textarea id="goal-plan-text" name="planText" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal-plan-number">Plan (Number/Percent)</label>
+                        <input type="number" id="goal-plan-number" name="planNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal-dimension">Dimension</label>
+                        <select id="goal-dimension" name="dimension" required>
+                            <option value="High is good">High is good</option>
+                            <option value="Low is good">Low is good</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal-actual">Actual Performance</label>
+                        <input type="number" id="goal-actual" name="actualPerformance">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goal-status">Status</label>
+                        <select id="goal-status" name="status" required>
+                            <option value="Not Started">Not Started</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Overdue">Overdue</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="action-btn primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="competency-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add/Edit Competency</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="competency-form">
+                    <input type="hidden" id="modal-competency-employee-id" name="id">
+                    <input type="hidden" id="modal-competency-id" name="competencyId">
+
+                    <div class="form-group">
+                        <label for="competency-name">Competency Name</label>
+                        <input type="text" id="competency-name" name="competencyName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="competency-score">Competency Score (1-5)</label>
+                        <input type="number" id="competency-score" name="competencyScore" min="1" max="5" step="0.1" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="action-btn primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/review_score.js"></script>
+</body>
+</html>

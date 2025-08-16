@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competencies</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/competencies.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dagne Bank PMS</h2>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="employees.html">Employees</a></li>
+                <li><a href="goals.html">Goals</a></li>
+                <li><a href="competencies.html">Competencies</a></li>
+                <li><a href="review_score.html">Review Score</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="engagement_survey.html">Engagement Survey</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="archive.html">Archive</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <h1>Competencies</h1>
+            </header>
+
+            <main>
+                <div class="table-actions">
+                    <div class="table-search">
+                        <label for="competency-search">Search Competencies:</label>
+                        <input type="text" id="competency-search" placeholder="Search by name, type, group...">
+                    </div>
+                </div>
+
+                <div class="competencies-table-container">
+                    <table id="competencies-table">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Full Name</th>
+                                <th>Competency Type</th>
+                                <th>Competency Group</th>
+                                <th>Rating (1-10)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="competencies-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="../js/script.js"></script>
+    <script src="../js/competencies.js"></script>
+</body>
+</html>

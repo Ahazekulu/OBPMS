@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement Survey</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/engagement_survey.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dagne Bank PMS</h2>
+            <div class="role-selector" id="role-selector-container">
+                <label for="user-role">View as:</label>
+                <select id="user-role" name="user-role">
+                    <option value="admin">Administrator</option>
+                    <option value="manager">Manager</option>
+                    <option value="user">User</option>
+            </select>
+        </div>
+        <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="employees.html"><i class="fas fa-users"></i> Employees</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="review_score.html"><i class="fas fa-star"></i> Review Score</a></li>
+                <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
+                <li><a href="engagement_survey.html" class="active"><i class="fas fa-chart-line"></i> Engagement Survey</a></li>
+                <li><a href="rewards.html"><i class="fas fa-gift"></i> Rewards</a></li>
+                <li><a href="archive.html"><i class="fas fa-archive"></i> Archive</a></li>
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="data.html"><i class="fas fa-database"></i> Data</a></li>
+                <li><a href="login.html" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <header class="main-header">
+                <h1>Employee Engagement Survey</h1>
+            </header>
+            <main>
+                <div id="survey-dashboard-view" class="content-section">
+                    <div class="dashboard-header">
+                        <h2>Team Engagement Dashboard</h2>
+                        <div class="dashboard-filters">
+                            <div class="filter-group">
+                                <label for="survey-period-filter">Survey Period:</label>
+                                <select id="survey-period-filter"></select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="team-filter">Team/Division:</label>
+                                <select id="team-filter"></select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-cards-container">
+                        <div class="kpi-card">
+                            <i class="fas fa-chart-pie icon"></i>
+                            <div class="value" id="overall-score-kpi">N/A</div>
+                            <div class="label">Overall Engagement Score</div>
+                        </div>
+                        <div class="kpi-card">
+                            <i class="fas fa-check-circle icon"></i>
+                            <div class="value" id="response-rate-kpi">N/A</div>
+                            <div class="label">Response Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="charts-container">
+                        <div class="chart-card">
+                            <h3>Engagement Score Trend</h3>
+                            <canvas id="engagementTrendChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Category Averages</h3>
+                            <canvas id="categoryAvgChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="survey-results-table content-section">
+                        <h3>Detailed Question Results</h3>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Question</th>
+                                        <th>Category</th>
+                                        <th>Avg. Score (1-5)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="question-results-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="survey-form-view" class="content-section" style="display: none;">
+                    <div class="survey-form-intro">
+                        <h2>Your Voice Matters!</h2>
+                        <p>This confidential survey helps us understand your experience and improve our workplace. Your responses are anonymous and will only be used for aggregated analysis.</p>
+                        <button id="view-my-results-btn" class="action-btn secondary">View My Past Results</button>
+                    </div>
+                    <form id="engagement-survey-form" class="survey-form">
+                        <div id="survey-questions-container"></div>
+                        <button type="submit" class="action-btn primary"><i class="fas fa-paper-plane"></i> Submit Survey</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/engagement_survey.js"></script>
+</body>
+</html>

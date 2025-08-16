@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dagne Bank PMS</h2>
+            <div class="role-selector" id="role-selector-container">
+                <label for="user-role">View as:</label>
+                <select id="user-role" name="user-role">
+                    <option value="admin">Administrator</option>
+                    <option value="manager">Manager</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="employees.html"><i class="fas fa-users"></i> Employees</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="review_score.html"><i class="fas fa-star"></i> Review Score</a></li>
+                <li><a href="feedback.html" class="active"><i class="fas fa-comments"></i> Feedback</a></li>
+                <li><a href="engagement_survey.html"><i class="fas fa-chart-line"></i> Engagement Survey</a></li>
+                <li><a href="rewards.html"><i class="fas fa-gift"></i> Rewards</a></li>
+                <li><a href="archive.html"><i class="fas fa-archive"></i> Archive</a></li>
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="data.html"><i class="fas fa-database"></i> Data</a></li>
+                <li><a href="login.html" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <header class="main-header">
+                <h1>Employee Feedback</h1>
+            </header>
+            <main>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="give-feedback">Give Feedback</button>
+                    <button class="tab-btn" data-tab="received-feedback">Received Feedback</button>
+                    <button class="tab-btn" data-tab="given-feedback">Given Feedback</button>
+                </div>
+                
+                <div id="give-feedback" class="tab-content active">
+                    <div class="content-header">
+                        <h2>Give Feedback</h2>
+                        <button id="request-feedback-btn" class="action-btn secondary"><i class="fas fa-paper-plane"></i> Request Feedback</button>
+                    </div>
+                    <form id="feedback-form" class="feedback-form">
+                        <div class="form-group">
+                            <label for="employee-select">Give feedback to:</label>
+                            <input type="text" id="employee-search" placeholder="Search for employee...">
+                            <select id="employee-select" name="toEmployeeId" required class="hidden-select"></select>
+                            <ul id="employee-suggestions" class="suggestions-list"></ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback-type">Feedback Type:</label>
+                            <select id="feedback-type" name="feedbackType" required>
+                                <option value="Positive">Positive</option>
+                                <option value="Constructive">Constructive</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback-message">Message:</label>
+                            <textarea id="feedback-message" name="feedbackMessage" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="is-private" name="isPrivate">
+                            <label for="is-private">Keep this feedback private from their manager</label>
+                        </div>
+                        <button type="submit" class="action-btn primary"><i class="fas fa-comment-dots"></i> Submit Feedback</button>
+                    </form>
+                </div>
+
+                <div id="received-feedback" class="tab-content">
+                    <div class="content-header">
+                        <h2>Received Feedback</h2>
+                        <div class="table-actions">
+                            <label for="received-filter">Filter by Type:</label>
+                            <select id="received-filter">
+                                <option value="All">All</option>
+                                <option value="Positive">Positive</option>
+                                <option value="Constructive">Constructive</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>From</th>
+                                    <th>Feedback Type</th>
+                                    <th>Message</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="received-feedback-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="given-feedback" class="tab-content">
+                    <div class="content-header">
+                        <h2>Given Feedback</h2>
+                        <div class="table-actions">
+                            <label for="given-filter">Filter by Type:</label>
+                            <select id="given-filter">
+                                <option value="All">All</option>
+                                <option value="Positive">Positive</option>
+                                <option value="Constructive">Constructive</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>To</th>
+                                    <th>Feedback Type</th>
+                                    <th>Message</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="given-feedback-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="../js/script.js"></script>
+    <script src="../js/feedback.js"></script>
+</body>
+</html>

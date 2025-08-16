@@ -1,0 +1,116 @@
+/*
+    Dagne Bank Performance Management System - Global Styles
+    Main Colors: RGB 88, 99, 170 and RGB 128, 188, 0
+*/
+
+:root {
+  --primary-color: rgb(88, 99, 170); /* Main blue color */
+  --secondary-color: rgb(128, 188, 0); /* Main green color */
+  --text-color: #333;
+  --bg-color: #f4f4f4;
+  --light-gray: #ccc;
+  --border-radius: 5px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid var(--light-gray);
+  padding: 12px;
+  text-align: left;
+}
+
+thead th {
+  background-color: var(--primary-color);
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-search {
+  margin-bottom: 20px;
+}
+
+.table-search input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}

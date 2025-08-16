@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/archive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Dagne Bank PMS</h2>
+            <div class="role-selector" id="role-selector-container">
+                <label for="user-role">View as:</label>
+                <select id="user-role" name="user-role">
+                    <option value="admin">Administrator</option>
+                    <option value="manager">Manager</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="employees.html"><i class="fas fa-users"></i> Employees</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li><a href="review_score.html"><i class="fas fa-star"></i> Review Score</a></li>
+                <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
+                <li><a href="engagement_survey.html"><i class="fas fa-chart-line"></i> Engagement Survey</a></li>
+                <li><a href="rewards.html"><i class="fas fa-gift"></i> Rewards</a></li>
+                <li><a href="archive.html" class="active"><i class="fas fa-archive"></i> Archive</a></li>
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="data.html"><i class="fas fa-database"></i> Data</a></li>
+                <li><a href="login.html" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <header class="main-header">
+                <h1>Archive & Audit Logs</h1>
+            </header>
+            <main>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="logs">Audit Logs</button>
+                    <button class="tab-btn" data-tab="archived-data">Archived Data</button>
+                </div>
+                
+                <div id="logs" class="tab-content active">
+                    <div class="content-header">
+                        <h2>System Activity Log</h2>
+                        <p>A chronological record of key events, such as data changes, deletions, and user actions.</p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                    <th>User</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logs-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="archived-data" class="tab-content">
+                    <div class="content-header">
+                        <h2>Archived Records</h2>
+                        <p>A secure vault for terminated employees, past reviews, and survey data.</p>
+                        <div class="search-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="archive-search" placeholder="Search archived records...">
+                        </div>
+                    </div>
+
+                    <div class="archive-section">
+                        <div class="section-header">
+                            <h3>Terminated Employees</h3>
+                            <span class="count-badge" id="employee-count-badge">0</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Job Position</th>
+                                        <th>Status</th>
+                                        <th>Archived Date</th>
+                                        <th class="admin-only">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="employees-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="archive-section">
+                        <div class="section-header">
+                            <h3>Archived Reviews</h3>
+                            <span class="count-badge" id="review-count-badge">0</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Review ID</th>
+                                        <th>Employee</th>
+                                        <th>Period</th>
+                                        <th>Archived Date</th>
+                                        <th class="admin-only">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="reviews-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="archive-section">
+                        <div class="section-header">
+                            <h3>Past Engagement Surveys</h3>
+                            <span class="count-badge" id="survey-count-badge">0</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Survey ID</th>
+                                        <th>Name</th>
+                                        <th>Period</th>
+                                        <th>Archived Date</th>
+                                        <th class="admin-only">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="surveys-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="../js/script.js"></script>
+    <script src="../js/archive.js"></script>
+</body>
+</html>
